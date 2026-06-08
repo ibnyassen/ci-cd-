@@ -60,5 +60,5 @@ jobs:
             whoami
             ls -al
           SCRIPT_AFTER: |
-            whoami
-            ls -al
+            cd ${{ secrets.REMOTE_TARGET }}
+            pm2 start npm --name "http-app" -- start
