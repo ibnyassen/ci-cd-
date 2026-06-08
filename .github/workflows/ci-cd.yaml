@@ -1,27 +1,28 @@
 name: HTTP APP WORKFLOW
+
 on:
   push:
-    branches: [ main ]
-  
+    branches:
+      - main
+
 jobs:
   test_and_build:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
+
     steps:
-    - name: clone code
-      uses: actions/checkout@v2
-    
-    -name : setup node js
-      uses: actions/setup-node@v6
-      with:
-        node-version: '24'  
-    
-    - name: install node js packages
-      run: npm install
+      - name: Clone code
+        uses: actions/checkout@v2
 
-   #  - name: run tests
-   #   run: npm test
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
 
-    - name: build app
-       run: npm run build
+      - name: Install Node.js packages
+        run: npm install
 
- 
+      # - name: Run tests
+      #   run: npm test
+
+      - name: Build app
+        run: npm run build
